@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    constructor-arg is used for constructor injection.
+    if there is only one argument, just specifying value attribute will suffice.
+    When multiple arg constructor is present, it is required to set constructor arg tags in same sequence as that of constructor arguments in bean.
+    In such case, only specifiying value tag will suffice.
+
+    However, if sequence of cosntructor-arg tag is not same as constructor arguments in bean, it is advisable to provide index which starts from 0.
+
+    Another robust solution is to provide the name attribute where the constructor argument name can be specified as that in the bean constructor.
+
+    Another alternative if the constructor arguments are of different types, you can specify the type attribute in constructor-arg to differentiate/sequence the constructor-arg.
+
+    -->
+    <bean id="triangle" class="constructorinjection.Triangle" >
+       <constructor-arg value="25" name="height" type="int"/>
+        <constructor-arg index="0" value="Scalene" type="java.lang.String"/>
+    </bean>
+
+    <bean id="circle" class="constructorinjection.Circle" >
+        <constructor-arg value="20"/>
+    </bean>
+
+</beans>
