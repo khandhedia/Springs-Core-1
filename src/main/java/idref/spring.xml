@@ -10,9 +10,11 @@
     </bean>
 
     <bean id="triangle" class="idref.Triangle" name="triangle-name" >
+<!--
         <property name="pointA">
             <idref bean="pointABean"/>
         </property>
+-->
 
         <property name="pointB">
             <bean class="idref.Point">

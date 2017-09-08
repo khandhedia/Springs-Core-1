@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="pointABean" class="collectioninjection.Point" name="pointA-name">
+        <property name="x" value="0" />
+        <property name="y" value="0"/>
+    </bean>
+
+    <bean id="triangle" class="collectioninjection.Triangle" name="triangle-name" >
+        <property name="points">
+            <list>
+                <ref bean="pointA-name"/>
+                <bean class="collectioninjection.Point">
+                    <property name="x" value="0"/>
+                    <property name="y" value="20"/>
+                </bean>
+                <bean class="collectioninjection.Point">
+                    <property name="x" value="-20"/>
+                    <property name="y" value="0"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="triangleset" class="collectioninjection.TriangleSet" name="triangleset-name" >
+        <property name="points">
+            <set>
+                <ref bean="pointA-name"/>
+                <bean class="collectioninjection.Point">
+                    <property name="x" value="0"/>
+                    <property name="y" value="20"/>
+                </bean>
+                <bean class="collectioninjection.Point">
+                    <property name="x" value="-20"/>
+                    <property name="y" value="0"/>
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="trianglemap" class="collectioninjection.TriangleMap" name="trianglemap-name" >
+        <property name="points">
+            <map>
+                <entry key="1" value-ref="pointA-name"/>
+                <entry key="2">
+                    <bean class="collectioninjection.Point">
+                        <property name="x" value="0"/>
+                        <property name="y" value="30"/>
+                    </bean>
+                </entry>
+                <entry key="3">
+                    <bean class="collectioninjection.Point">
+                        <property name="x" value="-30"/>
+                        <property name="y" value="0"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="circle" class="collectioninjection.Circle" >
+        <property name="size" value="10"/>
+    </bean>
+
+    <alias name="circle" alias="circle-alias"/>
+
+</beans>
