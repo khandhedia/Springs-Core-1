@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="pointABean" class="beaninheritence.Point" name="pointA-name">
+        <property name="x" value="0"/>
+        <property name="y" value="0"/>
+    </bean>
+
+    <bean id="pointCBean" class="beaninheritence.Point" name="pointC-name">
+        <property name="x" value="-20"/>
+        <property name="y" value="0"/>
+    </bean>
+
+    <!--Parent triangel defines only pointA - Rest triangles will inherit this point and define rest two points its own way-->
+    <bean id="parent-triangle" class="beaninheritence.Triangle" name="parent-triangle-name">
+        <property name="pointA" ref="pointA-name"/>
+    </bean>
+
+    <!--This one inherits pointA, Second point is defined as inner bean, third point is reference to other bean -->
+    <bean id="triangle" class="beaninheritence.Triangle" name="triangle-name" parent="parent-triangle">
+        <property name="pointB">
+            <bean class="beaninheritence.Point">
+                <property name="x" value="0"/>
+                <property name="y" value="20"/>
+            </bean>
+        </property>
+
+        <property name="pointC" ref="pointCBean"/>
+    </bean>
+
+    <!--This one inherits triangle bean which has all three points (1 inherited + 2 self defined). And third point is over-ridden as an inner bean-->
+    <bean id="triangle2" class="beaninheritence.Triangle" name="triangle2-name" parent="triangle">
+        <property name="pointC">
+            <bean class="beaninheritence.Point">
+                <property name="x" value="0"/>
+                <property name="y" value="30"/>
+            </bean>
+        </property>
+    </bean>
+
+</beans>
