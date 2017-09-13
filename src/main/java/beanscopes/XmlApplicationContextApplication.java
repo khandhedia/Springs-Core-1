@@ -15,7 +15,7 @@ public class XmlApplicationContextApplication
         Circle circle2 = (Circle) applicationContext.getBean("circle");
 
         System.out.println("Triangle Beans are same : " + (triangle1==triangle2));//true because singleton
-        System.out.printf("Circle Beans are same : " + (circle1 == circle2));//false because prototype
+        System.out.printf("CircleImplementsCallbackInterfaces Beans are same : " + (circle1 == circle2));//false because prototype
 
     }
 }

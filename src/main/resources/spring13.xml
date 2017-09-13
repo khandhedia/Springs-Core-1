@@ -41,4 +41,29 @@
         </property>
     </bean>
 
+    <bean id="triangleList1" class="beaninheritence.TriangleList" abstract="true">
+        <property name="points">
+            <list>
+                <ref bean="pointABean"/>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="triangleList2" class="beaninheritence.TriangleList" parent="triangleList1">
+        <property name="points">
+            <list>
+                <ref bean="pointCBean"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="triangleList3" class="beaninheritence.TriangleList" parent="triangleList1">
+        <property name="points">
+            <list merge="true">
+                <ref bean="pointCBean"/>
+            </list>
+        </property>
+    </bean>
+
 </beans>
